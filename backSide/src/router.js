@@ -6,6 +6,7 @@ const router = express.Router();
 
 
 router.get('/expenses', expensesController.getAll);
+router.get('/sumExpenses', expensesController.sumAll);
 router.post('/createExpenses', expensesMiddlewares.validateBody,  expensesController.createExpense);
 router.delete('/deleteExpenses/:id', expensesController.deleteExpense);
 router.put('/updateExpenses/:id', expensesMiddlewares.validateBody, expensesController.updateExpense);

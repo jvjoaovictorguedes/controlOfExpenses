@@ -55,10 +55,21 @@ const updateExpense = async (id, expense) => {
   }
 };
 
+const sumExpense = async () => {
+  try {
+    const query = 'SELECT SUM(value) AS soma_total FROM EXPENSES';
+    const [expenses] = await connection.execute(query);
+    return expenses;
+  } catch(err) {
+    return Error({ message: `error ${err}`});
+  }
+};
+
 module.exports = {
   getAll,
   createExpense,
   deleteExpense,
   updateExpense,
+  sumExpense,
 
 };

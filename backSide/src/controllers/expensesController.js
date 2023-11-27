@@ -38,10 +38,21 @@ const updateExpense = async (req, res) => {
   }
 };
 
+const sumAll = async (_req, res) => {
+  try {
+    const sum = await expensesModel.sumExpense();
+    return res.status(200).json(sum);
+  } catch(err) {
+    return res.status(500).json({ message: `Deu o seguinte erro: ${err}` });
+  }
+};
+
+
 module.exports = {
   getAll,
   createExpense,
   deleteExpense,
   updateExpense,
+  sumAll,
 
 };
